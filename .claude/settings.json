@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm db:migrate --name admin_password_login)",
+      "Bash(pnpm prisma *)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm db:generate)",
+      "Bash(pnpm typecheck *)",
+      "Bash(pnpm build *)",
+      "Bash(pnpm tsx *)"
+    ]
+  }
+}

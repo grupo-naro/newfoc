@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Contrato de desarrollo · NEWFOC</title>
+<style>
+  @page {
+    size: A4;
+    margin: 22mm 18mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #1a1a1a;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .page {
+    background: #ffffff;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 22mm 18mm;
+    min-height: 297mm;
+  }
+
+  /* Estilos sólo en impresión */
+  @media print {
+    body { background: #ffffff; }
+    .page { box-shadow: none; max-width: none; padding: 0; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+    h2, h3 { page-break-after: avoid; }
+    tr, li { page-break-inside: avoid; }
+  }
+
+  h1 {
+    font-size: 24pt;
+    margin: 0 0 6pt;
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: 15pt;
+    margin: 22pt 0 6pt;
+    border-bottom: 1pt solid #999;
+    padding-bottom: 4pt;
+    letter-spacing: -0.005em;
+  }
+  h3 {
+    font-size: 12pt;
+    margin: 14pt 0 4pt;
+    font-style: italic;
+  }
+  p { margin: 0 0 8pt; text-align: justify; }
+  ul, ol { margin: 0 0 10pt 18pt; padding: 0; }
+  li { margin-bottom: 4pt; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8pt 0 12pt;
+    font-size: 10pt;
+  }
+  th, td {
+    border: 0.5pt solid #888;
+    padding: 6pt 8pt;
+    vertical-align: top;
+  }
+  th {
+    background: #ececec;
+    text-align: left;
+    font-weight: 700;
+  }
+  td.numeric {
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cover {
+    min-height: calc(297mm - 44mm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover header { text-align: left; }
+  .cover .meta {
+    font-size: 10pt;
+    color: #555;
+    margin-top: 10pt;
+  }
+  .cover .parties {
+    border-top: 0.5pt solid #aaa;
+    border-bottom: 0.5pt solid #aaa;
+    padding: 14pt 0;
+    margin: 32pt 0;
+  }
+  .cover .parties dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 32mm 1fr;
+    row-gap: 8pt;
+    column-gap: 12pt;
+    font-size: 10.5pt;
+  }
+  .cover .parties dt { font-weight: 700; color: #555; }
+  .cover .parties dd { margin: 0; }
+
+  .summary-card {
+    border: 0.5pt solid #888;
+    background: #fafafa;
+    padding: 12pt 14pt;
+    margin: 14pt 0 0;
+    font-size: 10pt;
+  }
+  .summary-card h3 {
+    margin: 0 0 6pt;
+    font-style: normal;
+    font-size: 12pt;
+  }
+  .summary-card ul { margin: 0 0 0 16pt; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4pt 18pt;
+    margin: 6pt 0 12pt 18pt;
+    padding: 0;
+    list-style: disc;
+    font-size: 10pt;
+  }
+  .feature-grid li { margin-bottom: 3pt; }
+
+  .callout {
+    border-left: 3pt solid #1a1a1a;
+    padding: 8pt 12pt;
+    margin: 10pt 0;
+    background: #f7f7f7;
+    font-size: 10pt;
+  }
+  .callout strong { display: block; margin-bottom: 4pt; }
+
+  .signatures {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30pt;
+    margin-top: 44pt;
+  }
+  .sign-block {
+    border-top: 0.5pt solid #1a1a1a;
+    padding-top: 6pt;
+    font-size: 9.5pt;
+    color: #444;
+    text-align: center;
+  }
+  .sign-block .name {
+    font-size: 11pt;
+    color: #1a1a1a;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 2pt;
+  }
+
+  .footnote {
+    font-size: 9pt;
+    color: #555;
+    border-top: 0.5pt solid #ccc;
+    padding-top: 6pt;
+    margin-top: 18pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ────────── PORTADA ────────── -->
+<section class="page">
+  <div class="cover">
+    <header>
+      <h1>Contrato de desarrollo y servicio de tienda online</h1>
+      <p class="meta">
+        Versión 1.0 · Merlo, Buenos Aires · 25 de Mayo de 2026
+      </p>
+    </header>
+
+    <div class="parties">
+      <dl>
+        <dt>Prestador</dt>
+        <dd>
+          <strong>Naro Gráfica</strong><br>
+          Domicilio: Olaya 226, Merlo, Buenos Aires<br>
+          Email: publicidadnaro@gmail.com<br>
+          Tel: 1150392199
+        </dd>
+
+        <dt>Cliente</dt>
+        <dd>
+          <strong>NEWFOC</strong><br>
+          Tel: 1128512434
+        </dd>
+
+        <dt>Objeto</dt>
+        <dd>
+          Desarrollo, entrega y puesta en producción de la tienda online
+          de NEWFOC, junto con las condiciones de mantenimiento y soporte
+          que se detallan en este documento.
+        </dd>
+      </dl>
+    </div>
+
+    <div class="summary-card">
+      <h3>Resumen económico</h3>
+      <ul>
+        <li><strong>Desarrollo:</strong> proyecto completo entregado y publicado, incluye dominio por 1 año.</li>
+        <li><strong>Nuevas funcionalidades</strong> (post entrega): <strong>$180.000</strong> por funcionalidad.</li>
+        <li><strong>Suscripción de mantenimiento</strong> (opcional): <strong>$200.000 / mes</strong>. Incluye cambios solicitados, cobertura de servicios externos y gestión de la tienda.</li>
+        <li><strong>Servicios externos:</strong> hoy en planes gratuitos; si se supera el umbral y NO hay mantenimiento contratado, los cobra el proveedor al cliente.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ────────── 1. OBJETO ────────── -->
+<section class="page page-break">
+
+<h2>1. Objeto del contrato</h2>
+<p>
+  El Prestador desarrolla, entrega y publica una tienda online a medida
+  para el Cliente. El sistema queda operativo bajo la marca <strong>NEWFOC</strong>
+  con todas las funcionalidades descriptas en la sección 2 de este
+  contrato. La entrega incluye la puesta en producción, la capacitación
+  inicial al equipo del Cliente y un dominio registrado por el Prestador.
+</p>
+<p>
+  La aceptación del proyecto se realiza al firmar este contrato y al
+  cargar el Cliente los primeros datos reales (productos, categorías,
+  configuración de tienda) en el panel administrativo entregado.
+</p>
+
+<h2>2. Funcionalidades incluidas en el desarrollo</h2>
+<p>
+  El precio del desarrollo incluye la totalidad de las funcionalidades
+  detalladas a continuación. Todo lo que no aparezca en este listado se
+  considera <em>nueva funcionalidad</em> y se rige por la sección 5.
+</p>
+
+<h3>2.1 Tienda pública (storefront)</h3>
+<ul class="feature-grid">
+  <li>Página de inicio con bloques configurables</li>
+  <li>Carrusel automático con varios banners</li>
+  <li>Tira de categorías con iconos</li>
+  <li>Carrusel de productos destacados</li>
+  <li>Carrusel de productos en oferta</li>
+  <li>Barra de anuncios arriba del header</li>
+  <li>Catálogo de productos con filtros</li>
+  <li>Búsqueda por texto</li>
+  <li>Ordenamiento (nuevos, nombre)</li>
+  <li>Paginación</li>
+  <li>Página de producto (PDP) con galería</li>
+  <li>Selector de variantes (color, talle, etc.)</li>
+  <li>Productos relacionados al final de la PDP</li>
+  <li>Lista de espera por variante sin stock</li>
+  <li>Página /ofertas con productos en descuento</li>
+  <li>Carrito persistente</li>
+  <li>Checkout con datos de contacto y envío</li>
+  <li>Aplicación de cupones de descuento</li>
+  <li>Confirmación del pedido con detalle</li>
+  <li>Header sticky con búsqueda y navegación</li>
+  <li>Footer con datos de contacto y redes</li>
+  <li>Botón de WhatsApp flotante</li>
+  <li>Diseño responsive (mobile, tablet, desktop)</li>
+</ul>
+
+<h3>2.2 Panel de administración</h3>
+<ul class="feature-grid">
+  <li>Acceso seguro por mail (magic link)</li>
+  <li>Dashboard con métricas (órdenes, pendientes, ingresos)</li>
+  <li>Productos más vendidos</li>
+  <li>Últimas órdenes</li>
+  <li>ABM de productos (alta, baja, modificación)</li>
+  <li>Gestión de variantes y opciones</li>
+  <li>Carga de imágenes (Cloudinary)</li>
+  <li>Stock y precios por variante</li>
+  <li>Precio normal y precio anterior tachado</li>
+  <li>ABM de categorías con jerarquía</li>
+  <li>Selector de icono por categoría</li>
+  <li>ABM de bloques de contenido (CMS)</li>
+  <li>Vista previa de la home</li>
+  <li>Programación de bloques (fecha de inicio/fin)</li>
+  <li>ABM de cupones de descuento</li>
+  <li>Listado de órdenes con filtros y búsqueda</li>
+  <li>Detalle completo de cada orden</li>
+  <li>Cambio de estado con transiciones válidas</li>
+  <li>Click directo a WhatsApp del cliente</li>
+  <li>Listado de clientes por mail</li>
+  <li>Historial de compras por cliente</li>
+  <li>Exportación de órdenes a CSV</li>
+  <li>Notificación por mail al admin de nuevos pedidos</li>
+  <li>Configuración de la tienda</li>
+</ul>
+
+<h3>2.3 Lógica operativa específica de NEWFOC</h3>
+<p>
+  La tienda implementa un modelo de venta <em>bajo demanda</em> sin
+  pasarela de pago automática:
+</p>
+<ul>
+  <li>El cliente final solicita el pedido desde la web y queda en estado <strong>Pendiente</strong>.</li>
+  <li>El equipo de NEWFOC recibe un mail de aviso y contacta al cliente final por WhatsApp para confirmar stock real y coordinar el pago por transferencia.</li>
+  <li>Al confirmar contacto, el pedido pasa a estado <strong>Visto</strong>; al recibir la transferencia, a <strong>Pagada</strong>.</li>
+  <li>El stock se descuenta automáticamente al crear el pedido, evitando que dos clientes reserven la misma unidad.</li>
+  <li>Si el pedido se cancela, el stock se devuelve al inventario en forma automática.</li>
+  <li>Cuando un producto queda sin stock, el cliente puede anotarse en lista de espera y recibe aviso por mail cuando se reabastece.</li>
+</ul>
+
+<h3>2.4 SEO y marketing</h3>
+<ul class="feature-grid">
+  <li>URLs amigables (slugs)</li>
+  <li>Sitemap.xml automático</li>
+  <li>Robots.txt configurado</li>
+  <li>Metadata por producto y categoría</li>
+  <li>Datos estructurados JSON-LD</li>
+  <li>Open Graph para redes sociales</li>
+  <li>Integración con Google Analytics 4</li>
+  <li>Tracking de eventos clave de e-commerce</li>
+  <li>Web Vitals reporting</li>
+  <li>Optimización automática de imágenes</li>
+</ul>
+
+<h3>2.5 Mails transaccionales</h3>
+<ul>
+  <li>Pedido recibido al cliente final.</li>
+  <li>Notificación de nuevo pedido al equipo de NEWFOC.</li>
+  <li>Confirmación de pago al cliente final.</li>
+  <li>Notificación de despacho con código de seguimiento.</li>
+  <li>Confirmación de alta en lista de espera.</li>
+  <li>Aviso automático de reposición de stock.</li>
+</ul>
+
+</section>
+
+<!-- ────────── 3. SERVICIOS EXTERNOS ────────── -->
+<section class="page page-break">
+
+<h2>3. Servicios externos de terceros</h2>
+<p>
+  La tienda funciona sobre una serie de servicios externos provistos por
+  terceros. Todos están actualmente en planes <strong>gratuitos</strong>,
+  con cuotas de uso suficientes para el volumen inicial esperado. La
+  responsabilidad por estos costos depende de la existencia o no del
+  contrato de mantenimiento (sección 4).
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">Servicio</th>
+      <th>Función</th>
+      <th>Plan actual</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vercel</td>
+      <td>Hosting y publicación de la web.</td>
+      <td>Gratuito (Hobby)</td>
+    </tr>
+    <tr>
+      <td>Neon</td>
+      <td>Base de datos PostgreSQL en la nube.</td>
+      <td>Gratuito</td>
+    </tr>
+    <tr>
+      <td>Resend</td>
+      <td>Envío de mails transaccionales.</td>
+      <td>Gratuito</td>
+    </tr>
+    <tr>
+      <td>Cloudinary</td>
+      <td>Almacenamiento y optimización de imágenes.</td>
+      <td>Gratuito</td>
+    </tr>
+    <tr>
+      <td>Google Analytics</td>
+      <td>Métricas de tráfico y conversiones.</td>
+      <td>Gratuito (sin límite)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>Cobertura de los servicios externos</strong>
+  <ul>
+    <li><strong>Sin contrato de mantenimiento:</strong> si el uso supera el plan gratuito, el cargo lo asume directamente el Cliente. El Prestador notifica con anticipación cuando se acerca el límite.</li>
+    <li><strong>Con contrato de mantenimiento:</strong> la totalidad de los costos de estos servicios corre por cuenta del Prestador, sin cargo adicional al Cliente.</li>
+  </ul>
+</div>
+
+<h2>4. Suscripción de mantenimiento (opcional)</h2>
+<p>
+  El Cliente puede contratar el servicio mensual de mantenimiento por
+  <strong>$200.000 por mes</strong>. Esta suscripción incluye:
+</p>
+<ul>
+  <li>Cobertura completa de los costos de servicios externos descriptos en la sección 3, sin importar el volumen de uso.</li>
+  <li>Cambios y ajustes solicitados durante el mes (modificaciones de copy, ajustes de diseño, cambios menores de configuración, ajustes visuales del CMS, etc.).</li>
+  <li>Resolución de bugs y problemas técnicos detectados en producción.</li>
+  <li>Actualizaciones de seguridad y dependencias.</li>
+  <li>Acompañamiento al equipo del Cliente ante dudas de uso del panel administrativo.</li>
+  <li><strong>Gestión opcional de la tienda</strong>: si el Cliente no se siente cómodo administrando la plataforma, el Prestador puede gestionar la carga de productos, categorías, contenido y bloques de la home en su nombre.</li>
+</ul>
+
+<div class="callout">
+  <strong>Límites importantes del mantenimiento</strong>
+  El servicio de gestión <strong>NO incluye</strong> bajo ningún concepto:
+  <ul>
+    <li>El procesamiento, confirmación o seguimiento de las órdenes de venta.</li>
+    <li>La gestión de pagos, transferencias o cobranzas.</li>
+    <li>La comunicación con los clientes finales (WhatsApp, mail, etc.).</li>
+    <li>Las decisiones comerciales sobre stock, precios o promociones.</li>
+  </ul>
+  Estas tareas son responsabilidad exclusiva del Cliente.
+</div>
+
+<p>
+  El servicio de mantenimiento no implica el desarrollo de nuevas
+  funcionalidades. Los cambios que excedan los “ajustes y modificaciones
+  menores” se rigen por la sección 5.
+</p>
+
+<p>
+  La suscripción es de pago mensual por adelantado. Puede cancelarse en
+  cualquier momento con un preaviso de quince (15) días. Al cancelarse,
+  los costos de servicios externos vuelven a estar a cargo del Cliente
+  desde el primer día del mes siguiente.
+</p>
+
+</section>
+
+<!-- ────────── 5. NUEVAS FUNCIONALIDADES + 6. DOMINIO + 7. CONDICIONES ────────── -->
+<section class="page page-break">
+
+<h2>5. Nuevas funcionalidades</h2>
+<p>
+  Toda funcionalidad que el Cliente desee incorporar después de la
+  entrega del proyecto, y que no esté listada en la sección 2, se
+  cotiza como una <em>nueva funcionalidad</em>:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepto</th>
+      <th class="numeric">Precio unitario</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nueva funcionalidad (alcance acotado)</td>
+      <td class="numeric">$180.000</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  El precio aplica por funcionalidad concreta y autónoma. Por ejemplo:
+</p>
+<ul>
+  <li>Sistema de <em>reseñas y puntuaciones</em> por producto.</li>
+  <li>Módulo de <em>wishlist</em> (lista de deseos del cliente).</li>
+  <li>Cuenta de usuario con historial de compras.</li>
+  <li>Programa de fidelidad o puntos.</li>
+  <li>Filtros avanzados en el catálogo (por marca, atributos, etc.).</li>
+  <li>Cualquier integración nueva con un servicio externo.</li>
+</ul>
+
+<p>
+  Si una funcionalidad implica un alcance mayor al estándar (por
+  ejemplo, requiere cambios profundos en la base de datos, integraciones
+  externas complejas, o diseño nuevo extenso), el Prestador presentará
+  una cotización específica antes de empezar. El precio mencionado es
+  válido para alcances acotados típicos.
+</p>
+
+<p>
+  <strong>Aclaración respecto del mantenimiento:</strong> el contrato de
+  suscripción mensual <strong>NO</strong> incluye el desarrollo de
+  nuevas funcionalidades; cubre únicamente cambios menores, ajustes,
+  soporte y gestión. Cada funcionalidad nueva se factura aparte aunque
+  el Cliente tenga el mantenimiento activo.
+</p>
+
+<h2>6. Dominio</h2>
+<p>
+  El registro inicial del dominio queda incluido en el precio del
+  desarrollo, por un plazo de <strong>un (1) año</strong> contado desde la fecha de
+  registro. Una vez vencido ese plazo, la renovación debe realizarse
+  para que la tienda siga accesible.
+</p>
+<ul>
+  <li><strong>Sin mantenimiento contratado:</strong> el costo y la gestión de la renovación quedan a cargo del Cliente. El Prestador avisa con anticipación razonable antes del vencimiento.</li>
+  <li><strong>Con mantenimiento contratado:</strong> el Prestador gestiona y absorbe el costo de la renovación mientras la suscripción esté vigente.</li>
+</ul>
+<p>
+  En caso de no renovar a tiempo, el dominio puede quedar liberado y ser
+  adquirido por terceros. El Prestador no se responsabiliza por la
+  pérdida del dominio derivada de una falta de renovación oportuna.
+</p>
+
+<h2>7. Capacitación, entregables y soporte de garantía</h2>
+<p>
+  Junto con la entrega del proyecto, el Prestador realiza una sesión de
+  capacitación inicial al equipo del Cliente sobre el uso del panel
+  administrativo. Quedan a disposición del Cliente las credenciales de
+  acceso, los nombres de usuario administrativos cargados, y el dominio
+  productivo.
+</p>
+<p>
+  Independientemente de la contratación o no del mantenimiento, el
+  Prestador brinda <strong>treinta (30) días corridos</strong> de soporte
+  posterior a la entrega para corregir bugs imputables a defectos de
+  desarrollo. Este período no cubre cambios de alcance, nuevas
+  funcionalidades, ni problemas derivados de modificaciones realizadas
+  por el Cliente o terceros.
+</p>
+
+<h2>8. Disposiciones generales</h2>
+<ol>
+  <li>El Prestador conserva la propiedad intelectual del código fuente. Se otorga al Cliente una licencia de uso exclusivo y perpetuo para operar la tienda objeto de este contrato.</li>
+  <li>El Cliente es responsable por la veracidad y legalidad de los productos publicados, los precios cargados, las imágenes utilizadas y las comunicaciones con sus clientes finales.</li>
+  <li>El Prestador no asume responsabilidad por interrupciones del servicio causadas por proveedores externos (Vercel, Neon, Resend, Cloudinary, etc.).</li>
+  <li>Toda comunicación relativa a este contrato se realiza por mail a las direcciones indicadas en la portada.</li>
+  <li>Las partes acuerdan resolver cualquier diferencia de manera amistosa antes de recurrir a la vía judicial. Para todo lo no previsto, se someten a la jurisdicción de los tribunales ordinarios de [JURISDICCIÓN].</li>
+</ol>
+
+<div class="signatures">
+  <div class="sign-block">
+    <span class="name">Gráfica Naro</span>
+    Prestador<br>
+    Aclaración: ____________________<br>
+    DNI/CUIT: ____________________
+  </div>
+  <div class="sign-block">
+    <span class="name">NEWFOC</span>
+    Cliente<br>
+    Aclaración: ____________________<br>
+    DNI/CUIT: ____________________
+  </div>
+</div>
+
+<p class="footnote">
+  Documento generado el 25 de Mayo de 2026 · Versión 1.0 · Página final.
+</p>
+
+</section>
+
+</body>
+</html>
